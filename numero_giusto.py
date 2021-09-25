@@ -11,7 +11,9 @@ file_auth_words = open("parole.txt", "r")
 file_n_to_find = open("numero_da_trovare.txt", "r")
 
 n_tofind = file_n_to_find.read()
-auth_words = file_auth_words.read()
+auth_words_lower = file_auth_words.read()
+
+auth_words = auth_words_lower.upper()
 
 splitted_n_1 = n_1.split(" ")
 splitted_n_2 = n_2.split(" ")
@@ -26,7 +28,6 @@ n = 0
 
 for letter in auth_words:
 	for letter_spl1 in splitted_n_1:
-		print(letter_spl1, end=' ')
 		if (letter == letter_spl1):
 			n+=1
 	for letter_spl2 in splitted_n_2:
@@ -51,8 +52,13 @@ for letter in auth_words:
 		if (letter == letter_spl8):
 			n+=8
 
-print(letter)
+#n_splitted = [int(a) for a in str(n)]
+#n_reduced = 0
+
+#for i in range(len(n_splitted)):
+#	n_splitted = n_splitted +
+
+#print("I numeri per la firma ", auth_words, " sono:", n, "\nIn riduzione il numero è: ", n_reduced)
+print(n)
 
 auth_words = auth_words.split(" ")
-
-#print(auth_words)
