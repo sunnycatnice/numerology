@@ -10,71 +10,23 @@ input_words = input_words_lower.upper()
 numbers_table = file_numerology_type.read()
 
 table = ut.parse_numerology_file(numbers_table)
-to_analyze = ut.parse_input_words(input_words)
+to_analyze = ut.parse_input_file(input_words)
 signature = to_analyze[0]
 day = to_analyze[1]
 mohth = to_analyze[2]
 year = to_analyze[3]
 
+signature_integral = ut.count_nbrs_signature(signature, table)
+signature_reduced = ut.reduce_numbers_uo_to_1000(signature_integral)
+day_reduced = ut.reduce_numbers(day)
+month_reduced = ut.reduce_numbers(mohth)
+year_reduced = ut.reduce_numbers(year)
+data_sum= day_reduced + month_reduced + year_reduced
+karma = ut.reduce_numbers(data_sum)
 
-n = 0
-for letter in signature:
-	for letter_spl1 in table[0]:
-		if (letter == letter_spl1):
-			n+=1
-	for letter_spl2 in table[1]:
-		if (letter == letter_spl2):
-			n+=2
-	for letter_spl3 in table[2]:
-		if (letter == letter_spl3):
-			n+=3
-	for letter_spl4 in table[3]:
-		if (letter == letter_spl4):
-			n+=4
-	for letter_spl5 in table[4]:
-		if (letter == letter_spl5):
-			n+=5
-	for letter_spl6 in table[5]:
-		if (letter == letter_spl6):
-			n+=6
-	for letter_spl7 in table[6]:
-		if (letter == letter_spl7):
-			n+=7
-	for letter_spl8 in table[7]:
-		if (letter == letter_spl8):
-			n+=8
-	for letter_spl9 in table[8]:
-		if (letter == letter_spl9):
-			n+=9
+print("[", signature, "] firma", signature_integral, "ridotta", signature_reduced)
+print ("[", signature, "]", "è un", str(day_reduced) + "K" + str(karma), "con firma", signature_reduced)
 
-n_splitted = [int(a) for a in str(n)]
-n_reduced = 0
-n_tmp = 0
-
-#non funziona se deve ridurre numeri sopra a 1000....
-if (len(n_splitted) >= 2):
-	for i in n_splitted:
-		n_reduced+=i
-	tmp = [int(a) for a in str(n_reduced)]
-	if (len(tmp) >= 2):
-		for i in tmp:
-			n_tmp+=i
-		n_reduced = n_tmp
-
-print("\nIl numero per la firma", input_words, "è:", n)
-if (n_reduced != 0):
-	print("In riduzione il numero è:", n_reduced, "\n")
-
-n_reduced = 0
-day_splitted = [int(a) for a in str(day)]
-if (len(day_splitted) >= 2):
-	for digit in day_splitted:
-			n_reduced+=digit
-
-karma = n_reduced
-print (karma)
-
-
-#da aggiungere tipo 2K8 che con firma ... significa che.... (quindi anche date)
+#da aggiungere tipo 2K8 significa che...
 #da aggiungere la lista di parole prese da un file e il numero desiderato...
-#poi aggiungere i suggerimenti di nomi
+#dunque aggiungere i suggerimenti di nomi
