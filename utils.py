@@ -1,4 +1,3 @@
-
 def parse_numerology_file(number_table):
   spl_new_line = number_table.split("\n")
   line1_not_finished = spl_new_line[0]
@@ -9,6 +8,7 @@ def parse_numerology_file(number_table):
   line6_not_finished = spl_new_line[5]
   line7_not_finished = spl_new_line[6]
   line8_not_finished = spl_new_line[7]
+  line9_not_finished = spl_new_line[8]
 
   line1 = line1_not_finished.split('=')
   line2 = line2_not_finished.split('=')
@@ -18,6 +18,7 @@ def parse_numerology_file(number_table):
   line6 = line6_not_finished.split('=')
   line7 = line7_not_finished.split('=')
   line8 = line8_not_finished.split('=')
+  line9 = line9_not_finished.split('=')
 
   line1_splitted = line1[1].split(" ")
   line2_splitted = line2[1].split(" ")
@@ -27,7 +28,12 @@ def parse_numerology_file(number_table):
   line6_splitted = line6[1].split(" ")
   line7_splitted = line7[1].split(" ")
   line8_splitted = line8[1].split(" ")
+  line9_splitted = line9[1].split(" ")
 
-  ret = [line1_splitted, line2_splitted, line3_splitted, line4_splitted, line5_splitted, line6_splitted, line7_splitted, line8_splitted]
+  ret = [line1_splitted, line2_splitted, line3_splitted, line4_splitted, line5_splitted, line6_splitted, line7_splitted, line8_splitted, line9_splitted]
 
   return ret 
+
+def parse_input_words(input_words):
+  spl_colon = input_words.split(":")
+  print(spl_colon)

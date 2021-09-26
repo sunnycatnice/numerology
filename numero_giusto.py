@@ -1,6 +1,6 @@
 import utils as ut
 
-file_input_words = open("parole.txt", "r")
+file_input_words = open("input_file.txt", "r")
 file_n_to_find = open("numero_da_trovare.txt", "r")
 file_numerology_type = open("numerology_type.txt", "r")
 
@@ -10,7 +10,7 @@ input_words = input_words_lower.upper()
 numbers_table = file_numerology_type.read()
 
 table = ut.parse_numerology_file(numbers_table)
-spl_new_line = numbers_table.split("\n")
+to_analyze = ut.parse_input_words(input_words)
 
 n = 0
 
@@ -39,6 +39,9 @@ for letter in input_words:
 	for letter_spl8 in table[7]:
 		if (letter == letter_spl8):
 			n+=8
+  for letter_spl9 in table[8]:
+    if (letter == letter_spl9):
+      n+=9
 
 n_splitted = [int(a) for a in str(n)]
 n_reduced = 0
