@@ -11,10 +11,14 @@ numbers_table = file_numerology_type.read()
 
 table = ut.parse_numerology_file(numbers_table)
 to_analyze = ut.parse_input_words(input_words)
+signature = to_analyze[0]
+day = to_analyze[1]
+mohth = to_analyze[2]
+year = to_analyze[3]
+
 
 n = 0
-
-for letter in input_words:
+for letter in signature:
 	for letter_spl1 in table[0]:
 		if (letter == letter_spl1):
 			n+=1
@@ -39,9 +43,9 @@ for letter in input_words:
 	for letter_spl8 in table[7]:
 		if (letter == letter_spl8):
 			n+=8
-  for letter_spl9 in table[8]:
-    if (letter == letter_spl9):
-      n+=9
+	for letter_spl9 in table[8]:
+		if (letter == letter_spl9):
+			n+=9
 
 n_splitted = [int(a) for a in str(n)]
 n_reduced = 0
@@ -57,9 +61,19 @@ if (len(n_splitted) >= 2):
 			n_tmp+=i
 		n_reduced = n_tmp
 
-print("\nI numeri per la firma", input_words, "sono:", n)
+print("\nIl numero per la firma", input_words, "è:", n)
 if (n_reduced != 0):
 	print("In riduzione il numero è:", n_reduced, "\n")
+
+n_reduced = 0
+day_splitted = [int(a) for a in str(day)]
+if (len(day_splitted) >= 2):
+	for digit in day_splitted:
+			n_reduced+=digit
+
+karma = n_reduced
+print (karma)
+
 
 #da aggiungere tipo 2K8 che con firma ... significa che.... (quindi anche date)
 #da aggiungere la lista di parole prese da un file e il numero desiderato...
