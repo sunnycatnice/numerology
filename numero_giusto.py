@@ -52,13 +52,26 @@ for letter in auth_words:
 		if (letter == letter_spl8):
 			n+=8
 
-#n_splitted = [int(a) for a in str(n)]
-#n_reduced = 0
+n_splitted = [int(a) for a in str(n)]
+n_reduced = 0
+n_tmp = 0
 
-#for i in range(len(n_splitted)):
-#	n_splitted = n_splitted +
+#non funziona se deve ridurre numeri sopra a 1000....
+if (len(n_splitted) >= 2):
+	for i in n_splitted:
+		n_reduced+=i
+	tmp = [int(a) for a in str(n_reduced)]
+	if (len(tmp) >= 2):
+		for i in tmp:
+			n_tmp+=i
+		n_reduced = n_tmp
 
-#print("I numeri per la firma ", auth_words, " sono:", n, "\nIn riduzione il numero è: ", n_reduced)
-print(n)
+print("\nI numeri per la firma", auth_words, "sono:", n)
+if (n_reduced != 0):
+	print("In riduzione il numero è:", n_reduced, "\n")
+
+#da aggiungere tipo 2K8 che con firma ... significa che.... (quindi anche date)
+#da aggiungere la lista di parole prese da un file e il numero desiderato...
+#poi aggiungere i suggerimenti di nomi
 
 auth_words = auth_words.split(" ")
