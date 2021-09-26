@@ -1,54 +1,65 @@
-n_1 = "A I J Q Y"
-n_2 = "B K R"
-n_3 = "C G L S"
-n_4 = "D M T"
-n_5 = "E H N X"
-n_6 = "U V W"
-n_7 = "O Z"
-n_8 = "F P"
-
-file_auth_words = open("parole.txt", "r")
+file_input_words = open("parole.txt", "r")
 file_n_to_find = open("numero_da_trovare.txt", "r")
+file_numerology_type = open("numerology_type.txt", "r")
 
 n_tofind = file_n_to_find.read()
-auth_words_lower = file_auth_words.read()
+input_words_lower = file_input_words.read()
+input_words = input_words_lower.upper()
+number_table = file_numerology_type.read()
 
-auth_words = auth_words_lower.upper()
+spl_new_line = number_table.split("\n")
+line1_not_finished = spl_new_line[0]
+line2_not_finished = spl_new_line[1]
+line3_not_finished = spl_new_line[2]
+line4_not_finished = spl_new_line[3]
+line5_not_finished = spl_new_line[4]
+line6_not_finished = spl_new_line[5]
+line7_not_finished = spl_new_line[6]
+line8_not_finished = spl_new_line[7]
 
-splitted_n_1 = n_1.split(" ")
-splitted_n_2 = n_2.split(" ")
-splitted_n_3 = n_3.split(" ")
-splitted_n_4 = n_4.split(" ")
-splitted_n_5 = n_5.split(" ")
-splitted_n_6 = n_6.split(" ")
-splitted_n_7 = n_7.split(" ")
-splitted_n_8 = n_8.split(" ")
+line1 = line1_not_finished.split('=')
+line2 = line2_not_finished.split('=')
+line3 = line3_not_finished.split('=')
+line4 = line4_not_finished.split('=')
+line5 = line5_not_finished.split('=')
+line6 = line6_not_finished.split('=')
+line7 = line7_not_finished.split('=')
+line8 = line8_not_finished.split('=')
+
+line1_splitted = line1[1].split(" ")
+line2_splitted = line2[1].split(" ")
+line3_splitted = line3[1].split(" ")
+line4_splitted = line4[1].split(" ")
+line5_splitted = line5[1].split(" ")
+line6_splitted = line6[1].split(" ")
+line7_splitted = line7[1].split(" ")
+line8_splitted = line8[1].split(" ")
 
 n = 0
 
-for letter in auth_words:
-	for letter_spl1 in splitted_n_1:
+for letter in input_words:
+	for letter_spl1 in line1_splitted:
 		if (letter == letter_spl1):
 			n+=1
-	for letter_spl2 in splitted_n_2:
+	for letter_spl2 in line2_splitted:
 		if (letter == letter_spl2):
 			n+=2
-	for letter_spl3 in splitted_n_3:
+	for letter_spl3 in line3_splitted:
 		if (letter == letter_spl3):
 			n+=3
-	for letter_spl4 in splitted_n_4:
+	for letter_spl4 in line4_splitted:
 		if (letter == letter_spl4):
 			n+=4
-	for letter_spl5 in splitted_n_5:
+	for letter_spl5 in line5_splitted:
 		if (letter == letter_spl5):
 			n+=5
-	for letter_spl6 in splitted_n_6:
+	for letter_spl6 in line6_splitted:
 		if (letter == letter_spl6):
 			n+=6
-	for letter_spl7 in splitted_n_7:
+	for letter_spl7 in line7_splitted:
 		if (letter == letter_spl7):
 			n+=7
-	for letter_spl8 in splitted_n_8:
+	for letter_spl8 in line8_splitted:
 		if (letter == letter_spl8):
 			n+=8
 
@@ -66,12 +77,10 @@ if (len(n_splitted) >= 2):
 			n_tmp+=i
 		n_reduced = n_tmp
 
-print("\nI numeri per la firma", auth_words, "sono:", n)
+print("\nI numeri per la firma", input_words, "sono:", n)
 if (n_reduced != 0):
 	print("In riduzione il numero è:", n_reduced, "\n")
 
 #da aggiungere tipo 2K8 che con firma ... significa che.... (quindi anche date)
 #da aggiungere la lista di parole prese da un file e il numero desiderato...
 #poi aggiungere i suggerimenti di nomi
-
-auth_words = auth_words.split(" ")
