@@ -1,3 +1,5 @@
+from shutil import copyfile
+
 def parse_numerology_file(number_table):
   spl_new_line = number_table.split("\n")
   line1_not_finished = spl_new_line[0]
@@ -130,3 +132,16 @@ def count_nbrs_signature(signature, table):
 			if (letter == letter_spl9):
 				n+=9
 	return (n)
+
+def put_index_on_dictionary(dic):
+	print ("ENTRA")
+	dic_splitted = dic.split()
+	file_ita_dic_indexed = open("./dict/ita_dic_indexed.txt", "w+")
+	copyfile("./dict/ita_dictionary.txt", "./dict/ita_dic_indexed.txt")
+
+	#to_add_index = file_ita_dic_indexed.read()
+	#print(to_add_index)
+	#for i in to_add_index:
+		
+
+	#for i in dic_splitted:
