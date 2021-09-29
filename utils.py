@@ -133,12 +133,20 @@ def count_nbrs_signature(signature, table):
 				n+=9
 	return (n)
 
-def put_index_on_dictionary(dic):
-	print ("ENTRA")
-	dic_splitted = dic.split()
-	file_ita_dic_indexed = open("./dict/ita_dic_indexed.txt", "w+")
-	copyfile("./dict/ita_dictionary.txt", "./dict/ita_dic_indexed.txt")
+def put_index_on_dictionary():
+	index = 1
+	filepath_ita_dic_indexed = "./dict/ita_dic_indexed.txt"
+	filepath_ita_dictionary = "./dict/ita_dictionary.txt"
 
+	file_ita_dic_indexed = open(filepath_ita_dic_indexed, "w+")
+	copyfile(filepath_ita_dictionary, filepath_ita_dic_indexed)
+
+	with open(filepath_ita_dic_indexed) as fp:
+		lines = fp.read().splitlines()
+	with open(filepath_ita_dic_indexed, "w") as fp:
+		for line in lines:
+			print(str(index) , line, file=fp)
+			index += 1
 	#to_add_index = file_ita_dic_indexed.read()
 	#print(to_add_index)
 	#for i in to_add_index:
