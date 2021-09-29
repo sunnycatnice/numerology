@@ -1,9 +1,0 @@
-n_1=A I J Q Y 1
-n_2=B K R 2
-n_3=C G L S 3
-n_4=D M T 4
-n_5=E H N X 5
-n_6=U V W 6
-n_7=O Z 7
-n_8=F P 8
-n_9=9
