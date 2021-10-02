@@ -135,39 +135,21 @@ def count_nbrs_signature(signature, table):
 
 def put_index_on_dictionary(filepath_ita_dictionary):
 	index = 1
-	filepath_ita_dic_indexed = "./dict/ita_dic_indexed.txt"
+	filepath_ita_dict_indexed = "./dict/ita_dic_indexed.txt"
 
-	file_ita_dic_indexed = open(filepath_ita_dic_indexed, "w+")
-	copyfile(filepath_ita_dictionary, filepath_ita_dic_indexed)
+	copyfile(filepath_ita_dictionary, filepath_ita_dict_indexed)
 
-	with open(filepath_ita_dic_indexed) as fp:
-		lines = fp.read().splitlines()
-	with open(filepath_ita_dic_indexed, "w") as fp:
+	with open(filepath_ita_dict_indexed) as fp:
+		lines_upper = fp.read().upper()
+		lines = lines_upper.splitlines()
+	with open(filepath_ita_dict_indexed, "w") as fp:
 		for line in lines:
 			print(str(index) , line, file=fp)
 			index += 1
+	return [index]
 
-	return [lines]
-
-def parse_dict(filepath_ita_dict_indexed):
+def reduce_dict(dict_lines):
 	index = 0
-	mtx_len = 0
-
-	with open(filepath_ita_dict_indexed) as fp:
-		lines = fp.read().splitlines()
-	with open(filepath_ita_dict_indexed, "r") as fp:
-		for line in lines:
-			mtx_len += 1
-
-	print(mtx_len)
-	line_splitted = [None] *mtx_len
-	with open(filepath_ita_dict_indexed, "w") as fp:
-		for line in lines:
-			line_splitted[index] = line.split(" ")
-			#print(line[index])
-			print (line_splitted[index])
-			index += 1
-	return (line_splitted)
 
 def mtx_len(filepath):
 	mtx_len = 0
