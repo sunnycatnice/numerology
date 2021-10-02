@@ -148,8 +148,23 @@ def put_index_on_dictionary(filepath_ita_dictionary):
 			index += 1
 	return [index]
 
-def reduce_dict(dict_lines):
+def parse_dict(filepath_ita_dict_indexed):
 	index = 0
+	mtx_len = 0
+
+	with open(filepath_ita_dict_indexed) as fp:
+		lines = fp.read().splitlines()
+	with open(filepath_ita_dict_indexed, "r") as fp:
+		for line in lines:
+			mtx_len += 1
+
+	print(mtx_len)
+	line_splitted = [None] *mtx_len
+	with open(filepath_ita_dict_indexed, "w") as fp:
+		for line in lines:
+			line_splitted[index] = line.split(" ")
+			index += 1
+	return (line_splitted)
 
 def mtx_len(filepath):
 	mtx_len = 0

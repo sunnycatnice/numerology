@@ -21,13 +21,12 @@ day = to_analyze[1]
 mohth = to_analyze[2]
 year = to_analyze[3]
 dict_len = ut.put_index_on_dictionary(filepath_ita_dictionary)
+line_parsed = ut.parse_dict(filepath_ita_dict_indexed)
+
 i = 0
-with open(filepath_ita_dict_indexed) as fp:
-		lines = fp.read().splitlines()
-print (lines)
-for line in lines:
-	print (ut.count_nbrs_signature(line, table))
-ut.reduce_dict()
+for line in line_parsed:
+	print (ut.count_nbrs_signature(line_parsed[i][1], table))
+	i += 1
 
 signature_integral = ut.count_nbrs_signature(signature, table)
 signature_reduced = ut.reduce_numbers_uo_to_1000(signature_integral)
