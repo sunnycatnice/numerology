@@ -112,15 +112,15 @@ def generate_out_file(dict_len, table, filepath_ita_dict_indexed, n_tofind):
 				line_splitted[i] = line.split(" ")
 				i += 1
 		
-		i = 0
-		j = 0
-		while (i < (dict_len - 1)):
-			if (line_splitted[i][2] == n_tofind):
-				j += 1
-			i += 1
+	#calculate right_number matrix lenght
+	i = 0
+	j = 0
+	while (i < (dict_len - 1)):
+		if (line_splitted[i][2] == n_tofind):
+			j += 1
+		i += 1
 
-	print (n_tofind[0])
-	print (line_splitted[3])
+	#generate list with right numbers
 	right_number = [None] * j
 	i = 0
 	j = 0
@@ -130,10 +130,9 @@ def generate_out_file(dict_len, table, filepath_ita_dict_indexed, n_tofind):
 			j += 1
 		i += 1
 
+	#write the list in the file
 	i = 0
-	print (right_number[i])
 	with open("./outfile.txt", "w") as fp:
 		for line in right_number:
-			#unire la lista con join e stampare la linea
-			print(right_number[i], file=fp)
+			print(right_number[i][1] + ' ' + right_number[i][2], file=fp)
 			i += 1
