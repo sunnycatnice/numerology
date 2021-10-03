@@ -1,5 +1,4 @@
 from shutil import copyfile
-import parsing as prs
 
 def reduce_numbers(day):
 	n_reduced = 0
@@ -9,20 +8,23 @@ def reduce_numbers(day):
 		for digit in day_splitted:
 			n_reduced+=digit
 
-	return n_reduced
+	return str(n_reduced)
 
 def reduce_numbers_up_to_1000(n):
 	n_reduced = 0
 	n_tmp = 0
 	n_splitted = [int(a) for a in str(n)]
-	if (len(n_splitted) >= 2):
-		for i in n_splitted:
-			n_reduced+=i
-		tmp = [int(a) for a in str(n_reduced)]
-		if (len(tmp) >= 2):
-			for i in tmp:
-				n_tmp+=i
-			n_reduced = n_tmp
+	if (int(n) > 9):
+		if (len(n_splitted) >= 2):
+			for i in n_splitted:
+				n_reduced+=i
+			tmp = [int(a) for a in str(n_reduced)]
+			if (len(tmp) >= 2):
+				for i in tmp:
+					n_tmp+=i
+				n_reduced = n_tmp
+	else:
+		n_reduced = n
 	return n_reduced
 
 def count_nbrs_signature(signature, table):
@@ -76,13 +78,16 @@ def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
 	i = 0
 	to_reduce = [None] * dict_len
 	while(i < (dict_len-1)):
+		if (i == 0):
+			to_reduce[i] = count_nbrs_signature(line_parsed[i][1], table)
+			print (to_reduce[i])
 		to_reduce[i] = count_nbrs_signature(line_parsed[i][1], table)
 		i += 1
 	i = 0
-	print(to_reduce[1])
+	print(str(to_reduce[i]))
 	to_append = [None] * dict_len
 	while (i < (dict_len - 1)):
-		to_append[i] = reduce_numbers(to_reduce[i])
+		to_append[i] = reduce_numbers_up_to_1000(to_reduce[i])
 		i += 1
 
 	i = 0
@@ -91,6 +96,6 @@ def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
 		lines = lines_not_splitted.splitlines()
 	with open(filepath_ita_dict_indexed, "w") as fp:
 		for line in lines:
-			print (line , str(to_reduce[i]), file=fp)
+			print (line , str(to_append[i]), file=fp)
 			i += 1
 	
