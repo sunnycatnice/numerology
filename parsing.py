@@ -85,7 +85,6 @@ def parse_dict(filepath_ita_dict_indexed):
 		for line in lines:
 			mtx_len += 1
 
-	print(mtx_len)
 	line_splitted = [None] *mtx_len
 	with open(filepath_ita_dict_indexed, "r") as fp:
 		for line in lines:

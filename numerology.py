@@ -4,9 +4,9 @@ import utils as ut
 file_input_words = open("./config/input_file.txt", "r")
 file_n_to_find = open("./config/numero_da_trovare.txt", "r")
 file_numerology_type = open("./config/numerology_type.txt", "r")
-file_ita_dictionary = open("./dict/ita_dictionary.txt")
-
 filepath_ita_dictionary = "./dict/ita_dictionary.txt"
+file_ita_dictionary = open(filepath_ita_dictionary, "r")
+
 filepath_ita_dict_indexed = "./dict/ita_dic_indexed.txt"
 
 n_tofind = file_n_to_find.read()
@@ -24,6 +24,7 @@ year = to_analyze[3]
 dict_len = ut.put_index_on_dictionary(filepath_ita_dictionary)
 line_parsed = prs.parse_dict(filepath_ita_dict_indexed)
 ut.count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed)
+ut.generate_out_file(dict_len, table, filepath_ita_dict_indexed, n_tofind)
 
 signature_integral = ut.count_nbrs_signature(signature, table)
 signature_reduced = ut.reduce_numbers_up_to_1000(signature_integral)
