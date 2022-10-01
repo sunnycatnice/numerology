@@ -17,21 +17,25 @@ numbers_table = file_numerology_type.read()
 person.parse_input_file(input_words)
 table = prs.parse_numerology_file(numbers_table)
 
-dict_len = ut.put_index_on_dictionary(person.path_ita_dictionary)
+dict_len = ut.count_dict_lenght(person.path_ita_dictionary)
 line_parsed = prs.parse_dict(person.path_ita_dict_indexed)
 ut.count_nbrs_dict(dict_len, line_parsed, table, person.path_ita_dict_indexed)
 ut.generate_out_file(dict_len, table, person.path_ita_dict_indexed, n_tofind)
 
 signature_integral = ut.count_nbrs_signature(person.signature, table)
 signature_reduced = ut.reduce_numbers_up_to_1000(signature_integral)
-day_reduced = ut.reduce_numbers(person.day)
+person.set_day(ut.reduce_numbers(person.day))
 month_reduced = ut.reduce_numbers(person.month)
 year_reduced = ut.reduce_numbers(person.year)
-data_sum= day_reduced + month_reduced + year_reduced
+print(person.get_day())
+#write in ciao.txt file person.day
+open ("ciao.txt", "w").write(str(person.get_day()))
+#work on this even with json file
+data_sum= person.get_day + month_reduced + year_reduced
 karma = ut.reduce_numbers_up_to_1000(data_sum)
 
 print("\n[", person.signature, "] firma", signature_integral, "ridotta", signature_reduced)
-print ("[", person.signature, "]", "è un", str(day_reduced) + "K" + str(karma), "con firma", signature_reduced, "\n")
+print ("[", person.signature, "]", "è un", str(person.get_day) + "K" + str(karma), "con firma", signature_reduced, "\n")
 
 #da aggiungere tipo 2K8 significa che...
 #da aggiungere la lista di parole prese da un file e il numero desiderato...

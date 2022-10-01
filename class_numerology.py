@@ -17,3 +17,36 @@ class myNumerology:
         self.day = self.date.split('/')[0]
         self.month = self.date.split('/')[1]
         self.year = self.date.split('/')[2]
+    
+    # setters and getters
+    def set_signature(self, signature):
+        self.signature = signature
+    
+    def get_signature(self):
+        return self.signature
+    
+    def set_date(self, date):
+        self.date = date
+    
+    def get_date(self):
+        return self.date
+    
+    def set_day(self, day):
+        self.day = day
+    
+    def get_day(self):
+        return self.day
+    
+    def set_month(self, month):
+        self.month = month
+    
+    def get_month(self):
+        return self.month
+    
+    def set_year(self, year):
+        self.year = year
+    
+    def get_year(self):
+        return self.year
+    
+    

@@ -59,20 +59,14 @@ def count_nbrs_signature(signature, table):
 				n+=9
 	return (n)
 
-def put_index_on_dictionary(filepath_ita_dictionary):
-	index = 1
-	filepath_ita_dict_indexed = "./dict/ita_dic_indexed.txt"
-
-	copyfile(filepath_ita_dictionary, filepath_ita_dict_indexed)
-
-	with open(filepath_ita_dict_indexed, "r") as fp:
-		lines_upper = fp.read().upper()
-		lines = lines_upper.splitlines()
-	with open(filepath_ita_dict_indexed, "w") as fp:
-		for line in lines:
-			print(str(index) , line, file=fp)
+def count_dict_lenght(filepath_ita_dictionary):
+	index = 0
+	file = open(filepath_ita_dictionary, "r")
+	for line in file:
+		if line != "\n":
 			index += 1
 	return index
+    
 
 def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
 
