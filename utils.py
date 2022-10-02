@@ -66,8 +66,7 @@ def count_file_lenght(filepath_ita_dictionary):
 		if line != "\n":
 			index += 1
 	return index
-    
-
+	
 def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
 
 	#do numerology
