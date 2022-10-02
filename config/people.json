@@ -1,0 +1,17 @@
+{
+	"people":
+	{ 
+		"person0":
+		{
+			"signature": 2,
+			"day": 3,
+			"karma": 2
+		},
+		"person1":
+		{
+			"signature": 2,
+			"day": 3,
+			"karma": 2
+		}
+	} 	
+}
