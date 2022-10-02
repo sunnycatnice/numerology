@@ -75,19 +75,21 @@ def parse_input_file(input_words):
 
 	return ret
 
-def parse_dict(filepath_ita_dict_indexed):
+def parse_dict(filepath_dict_copy):
 	index = 0
 	mtx_len = 0
 
-	with open(filepath_ita_dict_indexed) as fp:
+	with open(filepath_dict_copy) as fp:
 		lines = fp.read().splitlines()
-	with open(filepath_ita_dict_indexed, "r") as fp:
+	with open(filepath_dict_copy, "r") as fp:
 		for line in lines:
 			mtx_len += 1
-
+	fp.close()
+ 
 	line_splitted = [None] *mtx_len
-	with open(filepath_ita_dict_indexed, "r") as fp:
+	with open(filepath_dict_copy, "r") as fp:
 		for line in lines:
 			line_splitted[index] = line.split(" ")
 			index += 1
+	fp.close()
 	return (line_splitted)

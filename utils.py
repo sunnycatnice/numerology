@@ -1,5 +1,3 @@
-from shutil import copyfile
-
 def reduce_numbers(day):
 	n_reduced = 0
 	day_splitted = [int(a) for a in str(day)]
@@ -29,37 +27,39 @@ def reduce_numbers_up_to_1000(n):
 
 def count_nbrs_signature(signature, table):
 	n = 0
-	for letter in signature:
-		for letter_spl1 in table[0]:
-			if (letter == letter_spl1):
-				n+=1
-		for letter_spl2 in table[1]:
-			if (letter == letter_spl2):
-				n+=2
-		for letter_spl3 in table[2]:
-			if (letter == letter_spl3):
-				n+=3
-		for letter_spl4 in table[3]:
-			if (letter == letter_spl4):
-				n+=4
-		for letter_spl5 in table[4]:
-			if (letter == letter_spl5):
-				n+=5
-		for letter_spl6 in table[5]:
-			if (letter == letter_spl6):
-				n+=6
-		for letter_spl7 in table[6]:
-			if (letter == letter_spl7):
-				n+=7
-		for letter_spl8 in table[7]:
-			if (letter == letter_spl8):
-				n+=8
-		for letter_spl9 in table[8]:
-			if (letter == letter_spl9):
-				n+=9
+	# I'm doing this because there are 2 levels of lists
+	for entire_word in signature:
+		for letter in entire_word:
+			for letter_spl1 in table[0]:
+				if (letter == letter_spl1):
+					n+=1
+			for letter_spl2 in table[1]:
+				if (letter == letter_spl2):
+					n+=2
+			for letter_spl3 in table[2]:
+				if (letter == letter_spl3):
+					n+=3
+			for letter_spl4 in table[3]:
+				if (letter == letter_spl4):
+					n+=4
+			for letter_spl5 in table[4]:
+				if (letter == letter_spl5):
+					n+=5
+			for letter_spl6 in table[5]:
+				if (letter == letter_spl6):
+					n+=6
+			for letter_spl7 in table[6]:
+				if (letter == letter_spl7):
+					n+=7
+			for letter_spl8 in table[7]:
+				if (letter == letter_spl8):
+					n+=8
+			for letter_spl9 in table[8]:
+				if (letter == letter_spl9):
+					n+=9
 	return (n)
 
-def count_dict_lenght(filepath_ita_dictionary):
+def count_file_lenght(filepath_ita_dictionary):
 	index = 0
 	file = open(filepath_ita_dictionary, "r")
 	for line in file:
@@ -73,10 +73,10 @@ def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
 	#do numerology
 	i = 0
 	to_reduce = [None] * dict_len
-	while(i < (dict_len - 1)):
-		to_reduce[i] = count_nbrs_signature(line_parsed[i][1], table)
+	while(i < (dict_len)):
+		to_reduce[i] = count_nbrs_signature(line_parsed[i], table)
 		i += 1
-	
+
 	#reduce numbers
 	i = 0
 	to_append = [None] * dict_len
@@ -94,7 +94,7 @@ def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
 			print (line , str(to_append[i]), file=fp)
 			i += 1
 
-def generate_out_file(dict_len, table, filepath_ita_dict_indexed, n_tofind):
+def generate_out_file(dict_len, filepath_ita_dict_indexed, n_tofind):
 
 	with open(filepath_ita_dict_indexed, "r") as fp:
 		lines_not_splitted = fp.read()
@@ -110,7 +110,7 @@ def generate_out_file(dict_len, table, filepath_ita_dict_indexed, n_tofind):
 	i = 0
 	j = 0
 	while (i < (dict_len - 1)):
-		if (line_splitted[i][2] == n_tofind):
+		if (line_splitted[i][1] == n_tofind):
 			j += 1
 		i += 1
 
@@ -119,7 +119,7 @@ def generate_out_file(dict_len, table, filepath_ita_dict_indexed, n_tofind):
 	i = 0
 	j = 0
 	while (i < (dict_len - 1)):
-		if (line_splitted[i][2] == n_tofind):
+		if (line_splitted[i][1] == n_tofind):
 			right_number[j] = line_splitted[i]
 			j += 1
 		i += 1
@@ -128,5 +128,5 @@ def generate_out_file(dict_len, table, filepath_ita_dict_indexed, n_tofind):
 	i = 0
 	with open("./outfile.txt", "w") as fp:
 		for line in right_number:
-			print(right_number[i][1] + ' ' + right_number[i][2], file=fp)
+			print(right_number[i][0] + ' ' + right_number[i][1], file=fp)
 			i += 1
