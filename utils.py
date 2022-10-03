@@ -71,7 +71,7 @@ def count_file_lenght(filepath_ita_dictionary):
 			index += 1
 	return index
 	
-def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
+def count_nbrs_dict(dict_len, line_parsed, table, dictionary_copied):
 
 	#do numerology
 	i = 0
@@ -89,10 +89,10 @@ def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
 
 	#write changes on file
 	i = 0
-	with open(filepath_ita_dict_indexed, "r") as fp:
+	with open(dictionary_copied, "r") as fp:
 		lines_not_splitted = fp.read()
 		lines = lines_not_splitted.splitlines()
-	with open(filepath_ita_dict_indexed, "w") as fp:
+	with open(dictionary_copied, "w") as fp:
 		for line in lines:
 			print (line , str(to_append[i]), file=fp)
 			i += 1
@@ -103,19 +103,19 @@ def generate_copied_upper_file(table):
 	filecopy = open(persondata.path_dict_copy, "w")
 	for line in file:
 		if line != "\n":
-			print(" " + line.upper() , file=filecopy, end="")
+			print(line.upper() , file=filecopy, end="")
 			index += 1
 	file.close()
 	filecopy.close()
 
-def generate_out_file(dict_len, filepath_ita_dict_indexed, n_tofind):
+def generate_out_file(dict_len, dictionary_copied, n_tofind):
 
-	with open(filepath_ita_dict_indexed, "r") as fp:
+	with open(dictionary_copied, "r") as fp:
 		lines_not_splitted = fp.read()
 		lines_to_split_spaces = lines_not_splitted.splitlines()
 		i = 0
 		line_splitted = [None] * dict_len
-		with open(filepath_ita_dict_indexed, "r") as fp:
+		with open(dictionary_copied, "r") as fp:
 			for line in lines_to_split_spaces:
 				line_splitted[i] = line.split(" ")
 				i += 1
