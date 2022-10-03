@@ -1,23 +1,24 @@
 import parsing as prs
 import utils as ut
+import config.globals as glb
 from class_numerology import myNumerology
 
 # general dictionary part, to be moved in a separate file
 person = myNumerology()
 
-file_n_to_find = open(person.path_n_to_find, "r")
-file_numerology_type = open(person.path_numerology_type, "r")
+file_n_to_find = open(glb.path_n_to_find, "r")
+file_numerology_type = open(glb.path_numerology_type, "r")
 
 n_tofind = file_n_to_find.read()
 numbers_table = file_numerology_type.read()
 
-dict_len = ut.count_file_lenght(person.path_dictionary)
-line_parsed = prs.parse_dict(person.path_dict_copy)
+dict_len = ut.count_file_lenght(glb.path_dictionary)
+line_parsed = prs.parse_dict(glb.path_dict_copy)
 table = prs.parse_numerology_file(numbers_table)
 ut.generate_copied_upper_file(table)
 
-ut.count_nbrs_dict(dict_len, line_parsed, table, person.path_dict_copy)
-ut.generate_out_file(dict_len, person.path_dict_copy, n_tofind)
+ut.count_nbrs_dict(dict_len, line_parsed, table, glb.path_dict_copy)
+ut.generate_out_file(dict_len, glb.path_dict_copy, n_tofind)
 
 # Person class part (to iterate in the future for CLI or make API)
 person.get_all_json_data()

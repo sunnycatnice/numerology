@@ -1,17 +1,11 @@
 # myNumerology class for numerology.py
 
 import utils as ut
+import config.globals as glb
 import json
 
 class myNumerology(object):
-	def __init__(self):
-		# paths definitions for dictionaries
-		self.path_dictionary = "./dictionaries/input_dictionaries/eng_dict_boys.txt"
-		self.path_dict_copy = "./dictionaries/output_dictionaries/eng_dict_copy.txt"
-		# path definitions for configs
-		self.path_people_json = "./config/people.json"
-		self.path_n_to_find = "./config/numero_da_trovare.txt"
-		self.path_numerology_type = "./config/numerology_type.num"
+	# def __init__(self):
 
 	def parse_date(self):
 		self.year = self.date[0:4]
@@ -22,7 +16,7 @@ class myNumerology(object):
 	def get_all_json_data(self):
 		
 		#read json file and save in people all the data
-		with open(self.path_people_json) as f:
+		with open(glb.path_people_json) as f:
 			d = json.load(f)
 			people = d["people"]
 

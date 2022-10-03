@@ -1,4 +1,5 @@
 from class_numerology import myNumerology
+import config.globals as glb
 
 persondata = myNumerology()
 
@@ -99,8 +100,8 @@ def count_nbrs_dict(dict_len, line_parsed, table, dictionary_copied):
 
 def generate_copied_upper_file(table):
 	index = 0
-	file = open(persondata.path_dictionary, "r")
-	filecopy = open(persondata.path_dict_copy, "w")
+	file = open(glb.path_dictionary, "r")
+	filecopy = open(glb.path_dict_copy, "w")
 	for line in file:
 		if line != "\n":
 			print(line.upper() , file=filecopy, end="")
