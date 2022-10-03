@@ -14,17 +14,18 @@ numbers_table = file_numerology_type.read()
 
 person.get_all_json_data()
 
-person.generate_copied_upper_file()
 dict_len = ut.count_file_lenght(person.path_dictionary)
 line_parsed = prs.parse_dict(person.path_dict_copy)
 table = prs.parse_numerology_file(numbers_table)
+ut.generate_copied_upper_file(table)
+
+ut.generate_out_file(dict_len, person.path_dict_copy, n_tofind)
 
 person.set_dictionary_length(dict_len)
 person.set_line_parsed(line_parsed)
 person.set_table(table)
-person.count_nbrs_dict()
 
-ut.generate_out_file(dict_len, person.path_dict_copy, n_tofind)
+ut.count_nbrs_dict(dict_len, line_parsed, table, person.path_dict_copy)
 
 person.set_numerology_signature_integral(ut.count_nbrs_signature(person.signature, table))
 person.set_numerology_signature_reduced(ut.reduce_numbers_up_to_1000(person.numerology_signature_integral))

@@ -10,6 +10,10 @@
 		{
 			"signature": "Barbara De Luca",
 			"date" : "1990-08-07"
+		},
+		"personTEST": {
+			"signature": "Test",
+			"date": "0001-01-01"
 		}
 	} 	
 }

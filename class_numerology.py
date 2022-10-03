@@ -33,45 +33,6 @@ class myNumerology(object):
 			self.set_signature(people[person]["signature"].upper())
 			self.set_date(people[person]["date"])
 			self.parse_date()
-
-	#file manipulation
-	def generate_copied_upper_file(self):
-		index = 0
-		file = open(self.path_dictionary, "r")
-		filecopy = open(self.path_dict_copy, "w")
-		for line in file:
-			if line != "\n":
-				#print without a \n
-				print(line.upper(), file=filecopy, end="",)
-				index += 1
-		file.close()
-		filecopy.close()
- 
-	def count_nbrs_dict(self):
-
-		#do numerology
-		i = 0
-		to_reduce = [None] * self.dict_len
-		while(i < (self.dict_len)):
-			to_reduce[i] = ut.count_nbrs_signature(self.line_parsed[i], self.table)
-			i += 1
-
-		#reduce numbers
-		i = 0
-		to_append = [None] * self.dict_len
-		while (i < (self.dict_len - 1)):
-			to_append[i] = ut.reduce_numbers_up_to_1000(to_reduce[i])
-			i += 1
-
-		#write changes on file
-		i = 0
-		with open(self.path_dict_copy, "r") as fp:
-			lines_not_splitted = fp.read()
-			lines = lines_not_splitted.splitlines()
-		with open(self.path_dict_copy, "w") as fp:
-			for line in lines:
-				print (line , str(to_append[i]), file=fp)
-				i += 1
 	
 	def set_dictionary_length(self, dict_len):
 		self.dict_len = dict_len

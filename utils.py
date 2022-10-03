@@ -1,3 +1,7 @@
+from class_numerology import myNumerology
+
+persondata = myNumerology()
+
 def reduce_numbers(day):
 	n_reduced = 0
 	day_splitted = [int(a) for a in str(day)]
@@ -73,7 +77,7 @@ def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
 	i = 0
 	to_reduce = [None] * dict_len
 	while(i < (dict_len)):
-		to_reduce[i] = count_nbrs_signature(line_parsed[i], table)
+		to_reduce[i] = count_nbrs_signature(line_parsed[i][1], table)
 		i += 1
 
 	#reduce numbers
@@ -93,6 +97,17 @@ def count_nbrs_dict(dict_len, line_parsed, table, filepath_ita_dict_indexed):
 			print (line , str(to_append[i]), file=fp)
 			i += 1
 
+def generate_copied_upper_file(table):
+	index = 0
+	file = open(persondata.path_dictionary, "r")
+	filecopy = open(persondata.path_dict_copy, "w")
+	for line in file:
+		if line != "\n":
+			print(" " + line.upper() , file=filecopy, end="")
+			index += 1
+	file.close()
+	filecopy.close()
+
 def generate_out_file(dict_len, filepath_ita_dict_indexed, n_tofind):
 
 	with open(filepath_ita_dict_indexed, "r") as fp:
@@ -109,6 +124,7 @@ def generate_out_file(dict_len, filepath_ita_dict_indexed, n_tofind):
 	i = 0
 	j = 0
 	while (i < (dict_len - 1)):
+		# print(line_splitted[i][0])
 		if (line_splitted[i][1] == n_tofind):
 			j += 1
 		i += 1
