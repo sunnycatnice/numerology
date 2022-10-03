@@ -32,48 +32,7 @@ def parse_numerology_file(number_table):
 
   ret = (line1_splitted, line2_splitted, line3_splitted, line4_splitted, line5_splitted, line6_splitted, line7_splitted, line8_splitted, line9_splitted)
 
-  return ret 
-
-def parse_input_file(input_words):
-	spl_colon = input_words.split(":")
-	spl_slash = spl_colon[1].split("/")
-	day = spl_slash[0]
-	month = spl_slash[1]
-	year = spl_slash[2]
-	
-	err = 0
-	if (day.isnumeric() == False):
-		err += 1
-	if (month.isnumeric() == False):
-		err += 20
-	if (year.isnumeric() == False):
-		err += 30
-	
-	if (err != 0):
-		if (err == 1):
-			exit("Error in: day date")
-		if (err == 20):
-			exit("Error in: month date")
-		if (err == 30):
-			exit("Error in: year date")
-		if (err == 21):
-			exit("Error in: day && month date")
-		if (err == 31):
-			exit("Error in: day && year date")
-		if (err == 50):
-			exit("Error in: month && year date")
-		if (err == 51):
-			exit("Error in the WHOLE date")
-
-	if ((int)(day) > 31):
-		exit("Error: the days can't be more than 31...")
-	if ((int)(month) > 12):
-		exit("Error: the months can't be more than 12...")
-	if ((int)(year) < -5000 or (int)(year) > 5000):
-		exit("Error: ain't you thinking too much babe? Check the year")
-	ret = (spl_colon[0], day, month, year)
-
-	return ret
+  return ret
 
 def parse_dict(filepath_dict_copy):
 	index = 0

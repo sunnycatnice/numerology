@@ -1,25 +1,38 @@
 # myNumerology class for numerology.py
 
 import utils as ut
+import json
 
-class myNumerology:
+class myNumerology(object):
 	def __init__(self):
 		# paths definitions for dictionaries
 		self.path_dictionary = "./dictionaries/input_dictionaries/eng_dict_boys.txt"
 		self.path_dict_copy = "./dictionaries/output_dictionaries/eng_dict_copy.txt"
 		# path definitions for configs
-		self.path_input_words = "./config/input_file.txt"
+		self.path_people_json = "./config/people.json"
 		self.path_n_to_find = "./config/numero_da_trovare.txt"
 		self.path_numerology_type = "./config/numerology_type.num"
+
+	def parse_date(self):
+		self.year = self.date[0:4]
+		self.month = self.date[5:7]
+		self.day = self.date[8:10]
 	
-	def parse_input_file(self, infos):
-		#infos is a unique string, self.signature is equal to every string before the first :
-		self.signature = infos.split(':')[0]
-		#instead, self.date is equal to every string after the first :
-		self.date = infos.split(':')[1]
-		self.day = self.date.split('/')[0]
-		self.month = self.date.split('/')[1]
-		self.year = self.date.split('/')[2]
+
+	def get_all_json_data(self):
+		
+		#read json file and save in people all the data
+		with open(self.path_people_json) as f:
+			d = json.load(f)
+			people = d["people"]
+
+		#loop through every person in people and save in this class all the data
+		for person in people:
+			#toupper because in json file can be in lower case
+			#thus, not matching with the dictionary
+			self.set_signature(people[person]["signature"].upper())
+			self.set_date(people[person]["date"])
+			self.parse_date()
 
 	#file manipulation
 	def generate_copied_upper_file(self):
@@ -69,12 +82,18 @@ class myNumerology:
 	def set_table(self, table):
 		self.table = table
   
-	def set_signature_integral(self, signature_integral):
-		self.signature_integral = signature_integral
+	def set_numerology_signature_integral(self, numerology_signature_integral):
+		self.numerology_signature_integral = numerology_signature_integral
   
-	def set_signature_reduced(self, signature_reduced):
-		self.signature_reduced = signature_reduced
+	def set_numerology_signature_reduced(self, numerology_signature_reduced):
+		self.numerology_signature_reduced = numerology_signature_reduced
+  
+	def set_signature(self, signature):
+		self.signature = signature
 
+	def set_date(self, date):
+		self.date = date
+	
 	def set_day(self, day):
 		self.day = day
 	
