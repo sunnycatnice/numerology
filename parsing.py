@@ -52,3 +52,32 @@ def parse_dict(filepath_dict_copy):
 			index += 1
 	fp.close()
 	return (line_splitted)
+
+# It returns a list of lists containing:
+# In the first position the day & karma 
+# & in the second position the corresponding right numbers
+def parse_name_compatibility_file(filepath_name_compatibility):
+	index = 0
+	mtx_len = 0
+
+	#count the number of lines in the file
+	with open(filepath_name_compatibility) as fp:
+		lines = fp.read().splitlines()
+	with open(filepath_name_compatibility, "r") as fp:
+		for line in lines:
+			mtx_len += 1
+	fp.close()
+ 
+	#save the lines in a matrix
+	line_splitted = [None] *mtx_len
+	with open(filepath_name_compatibility, "r") as fp:
+		for line in lines:
+			line_splitted[index] = line.split(" ")
+			index += 1
+	fp.close()
+	
+	#split every touple in the matrix by the "=" sign and save the result in a new matrix
+	line_splitted_by_equal_sign = [None] *mtx_len
+	for i in range(0, mtx_len):
+		line_splitted_by_equal_sign[i] = line_splitted[i][0].split("=")
+	return (line_splitted_by_equal_sign)

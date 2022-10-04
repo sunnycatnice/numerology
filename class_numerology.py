@@ -1,5 +1,6 @@
 # myNumerology class for numerology.py
 
+import parsing as prs
 import utils as ut
 import config.globals as glb
 import json
@@ -27,6 +28,13 @@ class myNumerology(object):
 			self.set_signature(people[person]["signature"].upper())
 			self.set_date(people[person]["date"])
 			self.parse_date()
+
+	def check_needed_number(self, day, karma_reduced):
+		right_number_list = prs.parse_name_compatibility_file(glb.path_name_compatibility)
+		day_and_karma = day + "K" + str(karma_reduced)
+
+		right_numbers = ut.return_right_numbers(right_number_list, day_and_karma).split("-")
+		return right_numbers
 	
 	def set_dictionary_length(self, dict_len):
 		self.dict_len = dict_len
