@@ -1,19 +1,22 @@
 {
 	"people":
-	{ 
+	{
 		"person0":
 		{
-			"signature": "Alfred Sinameta",
+			"name": "Alfred",
+			"surname": "Sinameta",
 			"date": "2000-06-12"
 		},
 		"person1":
 		{
-			"signature": "Barbara De Luca",
+			"name": "Barbara",
+			"surname": "De Luca",
 			"date" : "1990-08-07"
 		},
 		"personTEST": {
-			"signature": "Test",
-			"date": "0001-01-01"
+			"name": "Mata",
+			"surname": "Amritanandamayi",
+			"date": "1953-09-27"
 		}
-	} 	
+	}
 }

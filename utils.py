@@ -2,8 +2,6 @@ from numpy import sign
 from class_numerology import myNumerology
 import config.globals as glb
 
-persondata = myNumerology()
-
 def reduce_numbers(day):
 	n_reduced = 0
 	day_splitted = [int(a) for a in str(day)]
@@ -113,54 +111,15 @@ def generate_copied_upper_file(table):
 	file.close()
 	filecopy.close()
 
-# Useful function to get the right numbers as return value
+# Useful function to get the right numbers from name_compatibility.conf as return value
 def return_right_numbers(right_number_list, day_and_karma):
 	i = 0
 	for right_number in right_number_list:
 		if right_number_list[i][0] == day_and_karma:
 			return right_number_list[i][1]
 		i += 1
-
-# To generate an outfile with the reduced numbers (only those from 1 to 9)
-def generate_out_file_single_number(dict_len, dictionary_copied, n_tofind):
-
-	with open(dictionary_copied, "r") as fp:
-		lines_not_splitted = fp.read()
-		lines_to_split_spaces = lines_not_splitted.splitlines()
-		i = 0
-		line_splitted = [None] * dict_len
-		with open(dictionary_copied, "r") as fp:
-			for line in lines_to_split_spaces:
-				line_splitted[i] = line.split(" ")
-				i += 1
-		
-	#calculate right_number matrix lenght
-	i = 0
-	j = 0
-	while (i < (dict_len - 1)):
-		# print(line_splitted[i][0])
-		if (line_splitted[i][1] == n_tofind):
-			j += 1
-		i += 1
-
-	#generate list with right numbers
-	right_number = [None] * j
-	i = 0
-	j = 0
-	while (i < (dict_len - 1)):
-		if (line_splitted[i][1] == n_tofind):
-			right_number[j] = line_splitted[i]
-			j += 1
-		i += 1
-
-	#write the list in the file
-	i = 0
-	with open("./outfile.txt", "w") as fp:
-		for line in right_number:
-			print(right_number[i][0] + ' ' + right_number[i][1], file=fp)
-			i += 1
    
-# To generate an outfile with the entire numbers(1 to xxxx)
+# To generate an outfile with the entire numbers (1 to xxxx, not reduced)
 def generate_out_file_multiple_numbers(dict_len, dictionary_copied, numbers_to_find):
 
 	with open(dictionary_copied, "r") as fp:
@@ -182,22 +141,21 @@ def generate_out_file_multiple_numbers(dict_len, dictionary_copied, numbers_to_f
 			if (line_splitted[i][1] == number_to_find):
 				j += 1
 		i += 1
-
+	
 	#generate list with right numbers
 	right_number = [None] * j
 	i = 0
 	j = 0
 	while (i < (dict_len - 1)):
 		for number_to_find in numbers_to_find:
-			# print("number_to_find: " + number_to_find, " and line_splitted[i][1]: " + line_splitted[i][1])
 			if (line_splitted[i][1] == number_to_find):
 				right_number[j] = line_splitted[i]
 				j += 1
 		i += 1
-
+ 
 	#write the list in the file
 	i = 0
-	with open("./outfile.txt", "w") as fp:
+	with open(glb.path_output_file, "w") as fp:
 		for line in right_number:
 			print(right_number[i][0] + ' ' + right_number[i][1], file=fp)
 			i += 1
