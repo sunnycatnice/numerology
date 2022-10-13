@@ -80,7 +80,7 @@ def count_nbrs_dict(dict_len, line_parsed, table, dictionary_copied, bool_entire
 	i = 0
 	to_reduce = [None] * dict_len
 	while(i < (dict_len)):
-		to_reduce[i] = count_nbrs_signature(line_parsed[i][1], table)
+		to_reduce[i] = count_nbrs_signature(line_parsed[i][0], table)
 		i += 1
 	if bool_entire == False:
 		#reduce numbers
@@ -90,7 +90,6 @@ def count_nbrs_dict(dict_len, line_parsed, table, dictionary_copied, bool_entire
 			to_append[i] = reduce_numbers_up_to_1000(to_reduce[i])
 			i += 1
 	else:
-		print("HERE")
 		to_append = to_reduce
 
 	#write changes on file

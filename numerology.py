@@ -33,7 +33,7 @@ person.set_karma_complete(person.day + person.month + person.year)
 person.set_karma_reduced(ut.reduce_numbers_up_to_1000(person.karma_complete))
 
 ut.generate_copied_upper_file(table)
-ut.count_nbrs_dict(dict_len, line_parsed, table, glb.path_dict_copy, bool_entire = True)
+ut.count_nbrs_dict(dict_len, line_parsed, table, glb.path_dict_copy, bool_entire = False)
 # ut.generate_out_file_single_number(dict_len, glb.path_dict_copy, n_tofind)
 numbers_to_find = person.check_needed_number(person.day, person.karma_reduced)
 ut.generate_out_file_multiple_numbers(dict_len, glb.path_dict_copy, numbers_to_find)

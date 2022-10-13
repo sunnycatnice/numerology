@@ -49,6 +49,7 @@ def parse_dict(filepath_dict_copy):
 	with open(filepath_dict_copy, "r") as fp:
 		for line in lines:
 			line_splitted[index] = line.split(" ")
+			# print(str(index) + str(line_splitted[index]))
 			index += 1
 	fp.close()
 	return (line_splitted)
