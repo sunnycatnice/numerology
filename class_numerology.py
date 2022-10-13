@@ -16,7 +16,6 @@ class myNumerology(object):
 		#toupper because in json file can be in lower case
 		#thus, not matching with the dictionary
 		self.set_name(people[person]["name"].upper())
-		print(self.name)
 		self.set_surname(people[person]["surname"].upper())
 		self.set_signature(self.name + " " + self.surname)
 		self.set_date(people[person]["date"])
