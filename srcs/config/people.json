@@ -1,0 +1,22 @@
+{
+	"people":
+	{
+		"person0":
+		{
+			"name": "Alfred",
+			"surname": "Sinameta",
+			"date": "2000-06-12"
+		},
+		"person1":
+		{
+			"name": "Barbara",
+			"surname": "De Luca",
+			"date" : "1990-08-07"
+		},
+		"personTEST": {
+			"name": "Mata",
+			"surname": "Amritanandamayi",
+			"date": "1953-09-27"
+		}
+	}
+}
