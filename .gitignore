@@ -5,6 +5,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Remove every db file
+*.db
+db.*
+
 # Distribution / packaging
 bin/
 build/

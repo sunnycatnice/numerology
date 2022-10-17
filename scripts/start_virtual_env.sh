@@ -3,7 +3,7 @@
 # Make sure to have installed virtualenv (pip3 install virtualenv)
 
 # Python version for virtual environment
-PYVERSION=3.10
+PYVERSION=3.10.6
 
 GREEN='\033[0;32m'
 BOLD_GREEN='\033[1;32m'

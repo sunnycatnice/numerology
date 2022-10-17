@@ -2,7 +2,7 @@
 
 # This script generates a requirements.txt file from the current environment
 # and installs the packages in the requirements.txt file.
-PYVERSION=3.10
+PYVERSION=3.10.6
 
 pip${PYVERSION} freeze > requirements.txt
 
