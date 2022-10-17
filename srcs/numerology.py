@@ -7,6 +7,7 @@ from class_numerology import myNumerology
 file_numerology_type = open(glb.path_numerology_type, "r")
 numbers_table = file_numerology_type.read()
 
+
 # general dictionary part, to be moved in a separate file
 person = myNumerology("person0")
 
