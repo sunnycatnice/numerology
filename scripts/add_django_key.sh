@@ -30,6 +30,19 @@ if ! grep -q "DJANGO_KEY" ~/.zshrc; then
     echo -e "\e[32mKey added!\e[0m\n"
 else
     echo "DJANGO_KEY found in ~/.zshrc, make sure to check if it's a functioning key!\n"
+    #ask if the user wants to change the key
+    echo -n "Do you want to change the key? [y/n]: "
+    read CHANGE
+    if [ $CHANGE = "y" ]
+    then
+        #replace the key with the new one
+        sed -i.old '/DJANGO/d' ~/.zshrc
+        echo "export DJANGO_KEY='$KEY'" >> ~/.zshrc 
+        #echo with green color key changed!
+        echo -e "\e[32mKey changed!\e[0m\n"
+    else
+        echo "Key not changed!\n"
+    fi
 fi
 
 if ! grep -q "DJANGO_KEY" ~/.bashrc; then
