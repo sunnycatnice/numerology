@@ -3,7 +3,7 @@
 # Make sure to have installed virtualenv (pip3 install virtualenv)
 
 # Python version for virtual environment
-PYVERSION=3.10.6
+PYVERSION=3.10
 
 GREEN='\033[0;32m'
 BOLD_GREEN='\033[1;32m'
@@ -12,12 +12,11 @@ DEFAULT_COLOR='\033[0m'
 RED='\033[0;31m'
 YELLOW='\033[0;33m'
 
-# If .venv exists in #PWD, skip, else create it
 if [ -d .venv ]; then
     echo "${GREEN}Virtual environment already exists, skipping creation${RESET_COLOR}"
 else
     echo "${GREEN}Creating virtual environment..."
-    ${PYVERSION} -m venv .venv
+    python${PYVERSION} -m venv $PYTHON_PROJECT_FOLDER/.venv
     echo "python${PYVERSION} -m venv .venv"
     echo "${BOLD_GREEN}Virtual environment created${RESET_COLOR}"
 fi

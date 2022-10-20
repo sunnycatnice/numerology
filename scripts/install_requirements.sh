@@ -8,3 +8,4 @@ pip${PYVERSION} freeze > requirements.txt
 
 # Installing packages from requirements.txt
 pip${PYVERSION} install -r requirements.txt
+
