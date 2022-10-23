@@ -2,6 +2,9 @@ led / optimized / DLL files
 __pycache__/
 *.py[cod]
 
+# Ignore the .venv directory
+.venv/
+
 # C extensions
 *.so
 
