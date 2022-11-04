@@ -4,6 +4,8 @@
 # Make sure to have zsh installed!
 # The key is passed as first argument or entered from stdin
 
+# !! TO DO a parsing in bash to accept the key whatever the format
+
 DJANGO_CHECK="django-"
 OPENAI_CHECK="sk-"
 
