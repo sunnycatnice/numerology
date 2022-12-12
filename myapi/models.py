@@ -2,7 +2,8 @@ from django.db import models
 
 class Persondata(models.Model):
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100, default='NOT SET')
+    birthdate = models.CharField(max_length=100, default='NOT SET')
     
     def __str__(self):
-        return self.name+': '+self.description
+        return 'Signature: ' + self.name + self.surname+ ' / Birthdate:' + self.birthdate

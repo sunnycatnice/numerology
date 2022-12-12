@@ -5,4 +5,4 @@ from myapi.models import Persondata
 class peopleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Persondata
-        fields = ('id', 'name', 'description')
+        fields = ('id', 'name', 'surname', 'birthdate')
