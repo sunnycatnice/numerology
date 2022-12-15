@@ -118,11 +118,10 @@ def generate_copied_upper_file(table):
 
 # Useful function to get the right numbers from name_compatibility.conf as return value
 def return_right_numbers(right_number_list, day_and_karma):
-	i = 0
 	for right_number in right_number_list:
-		if right_number_list[i][0] == day_and_karma:
-			return right_number_list[i][1]
-		i += 1
+		if right_number[0] == day_and_karma:
+			return right_number[1]
+	
    
 # To generate an outfile with the entire numbers (1 to xxxx, not reduced)
 def generate_out_file_multiple_numbers(dict_len, dictionary_copied, numbers_to_find):

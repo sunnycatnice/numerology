@@ -15,15 +15,11 @@ class myNumerology(object):
 			print("Error in request")
 		# to parse people correctly from get request
 		people = json.loads(json.dumps(json.loads(json_data.text)))
-		print("people: ", people)
 
 		#toupper because in json file can be in lower case
 		#thus, not matching with the dictionary
 
-		#print the name found in people
-		print(type(people))
 		self.set_name(people["person"]["name"].upper())
-		print("name: ", self.name)
 		self.set_surname(people["person"]["surname"].upper())
 		self.set_signature(self.name + " " + self.surname)
 		self.set_date(people["person"]["date"])

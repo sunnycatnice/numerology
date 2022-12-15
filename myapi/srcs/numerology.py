@@ -1,12 +1,8 @@
-import sys
-import json
-import os
 import parsing as prs
 import utils as ut
 import config.globals as glb
 from class_numerology import myNumerology
 #import module to make web requests to the API
-import requests
 
 file_numerology_type = open(glb.path_numerology_type, "r")
 numbers_table = file_numerology_type.read()
@@ -25,9 +21,10 @@ person.set_table(table)
 
 person.set_numerology_signature_integral(ut.count_nbrs_signature(person.signature, person.table))
 person.set_numerology_signature_reduced(ut.reduce_numbers_up_to_1000(person.numerology_signature_integral))
+#rivedere questa parte confusa del karma
 person.set_day(ut.reduce_numbers(person.day))
-person.set_month = ut.reduce_numbers(person.month)
-person.set_year = ut.reduce_numbers(person.year)
+person.set_month(ut.reduce_numbers(person.month))
+person.set_year(ut.reduce_numbers(person.year))
 person.set_karma_complete(person.day + person.month + person.year)
 person.set_karma_reduced(ut.reduce_numbers_up_to_1000(person.karma_complete))
 
