@@ -12,6 +12,9 @@ __pycache__/
 *.db
 db.*
 
+#django
+myapp/migrations/
+
 # Distribution / packaging
 bin/
 build/

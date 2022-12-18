@@ -76,8 +76,8 @@ class myNumerology(object):
 	def set_year(self, year):
 		self.year = year
 	
-	def set_karma_complete(self, karma_complete):	
-		self.karma_complete = karma_complete
+	def set_karma_integral(self, karma_integral):	
+		self.karma_integral = karma_integral
 
 	def set_karma_reduced(self, karma_reduced):
 		self.karma_reduced = karma_reduced

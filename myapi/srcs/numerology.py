@@ -25,8 +25,8 @@ person.set_numerology_signature_reduced(ut.reduce_numbers_up_to_1000(person.nume
 person.set_day(ut.reduce_numbers(person.day))
 person.set_month(ut.reduce_numbers(person.month))
 person.set_year(ut.reduce_numbers(person.year))
-person.set_karma_complete(person.day + person.month + person.year)
-person.set_karma_reduced(ut.reduce_numbers_up_to_1000(person.karma_complete))
+person.set_karma_integral(person.day + person.month + person.year)
+person.set_karma_reduced(ut.reduce_numbers_up_to_1000(person.karma_integral))
 
 ut.generate_copied_upper_file(person.table)
 ut.count_nbrs_dict(dict_len, line_parsed, person.table, glb.path_dict_copy, bool_entire = True)
@@ -39,8 +39,13 @@ print("Le firme giuste per", person.day + "K" + str(person.karma_reduced), "sono
 print("Firme generate in output.txt")
 print("")
 
+# This will return: day month year, karma_integral & reduced, numerology_signature_integral & reduced
+def ret_numerology():
+    return [person.day, person.month , person.year ,person.karma_integral, person.karma_reduced, person.numerology_signature_integral ,person.numerology_signature_reduced]
 
 #da aggiungere tipo 2K8 significa che...
 #da aggiungere la lista di parole prese da un file e il numero desiderato...
 #dunque aggiungere i suggerimenti di nomi
 # to add file json compatibility
+
+# to add calendar suggestions for the whole year (red, yellow, green days)
