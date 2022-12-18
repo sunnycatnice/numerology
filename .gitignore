@@ -15,6 +15,9 @@ db.*
 #django
 myapp/migrations/
 
+#remove recursively every .DS_Store file
+**/.DS_Store
+
 # Distribution / packaging
 bin/
 build/
